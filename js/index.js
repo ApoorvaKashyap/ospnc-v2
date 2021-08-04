@@ -35,12 +35,15 @@ document.getElementById('submitName').addEventListener('click', function(){
     };
     requests.send();
     setTimeout(() => {
-        alert("Operation Timed Out");
-        array.forEach(element => {
-            avail(element,'401',true)
-        });
-    }, 10000);
+        if (requests.statusText !== "OK") {
+            alert("Operation Timed Out");
+            array.forEach(element => {
+                avail(element,'401',true)
+            });
+        }
+    }, 50000);
 });
+
 
 document.getElementById('projectName').addEventListener('keydown', function(event) {
     if (event.key === "Enter") {
@@ -53,18 +56,19 @@ document.getElementById('projectName').addEventListener('keydown', function(even
         requests.onload = function() {
             data = JSON.parse(this.response)
             console.log(data)
-            
             array.forEach(element => {
                 avail(element, data)            
             });    
         };
         requests.send();
         setTimeout(() => {
-            alert("Operation Timed Out");
-            array.forEach(element => {
-                avail(element,'401',true)
-            });
-        }, 10000);
+            if (requests.statusText !== "OK") {
+                alert("Operation Timed Out");
+                array.forEach(element => {
+                    avail(element,'401',true)
+                });
+            }
+        }, 50000);
     }
 });
 
