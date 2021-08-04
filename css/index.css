@@ -89,6 +89,8 @@ main {
 	border: 0;
 	font-size: 20px;
 	font-family: 'Times New Roman', Times, serif;
+	padding: 5px;
+	text-align: center;
 }
 
 #submitName {
